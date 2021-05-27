@@ -10,7 +10,6 @@ from PyTrinamic.features.LinearRampModule import LinearRampModule
 from PyTrinamic.features.MotorControl import MotorControl
 
 class TMCM_3110(tmcl_module, StallGuard2Module, LinearRampModule, MotorControl):
-    MOTORS = 3
 
     class APs:
         TargetPosition                 = 0
@@ -84,6 +83,12 @@ class TMCM_3110(tmcl_module, StallGuard2Module, LinearRampModule, MotorControl):
 
     class GPs:
         pass
+
+    def __init__(self, connection, module_id=1):
+        tmcl_module.__init__(self, connection, module_id)
+
+        self.MOTORS = 3
+        self.__default_motor = 0
 
     @staticmethod
     def getEdsFile():

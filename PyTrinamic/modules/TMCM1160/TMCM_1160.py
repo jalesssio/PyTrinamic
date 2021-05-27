@@ -147,7 +147,7 @@ class TMCM_1160(tmcl_module, StallGuard2Module, LinearRampModule, MotorControl):
         self.setRampMode(axis, 0)
 
     def moveBy(self, axis, difference, velocity=None):
-        position = difference + self.getActualPosition()
+        position = difference + self.getActualPosition(axis)
 
         self.moveTo(axis, position, velocity)
 

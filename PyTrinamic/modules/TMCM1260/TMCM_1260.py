@@ -156,7 +156,7 @@ class TMCM_1260(tmcl_module, StallGuard2Module, LinearRampModule, MotorControl):
 
     def moveBy(self, axis, distance, velocity=None):
         if velocity:
-            self.setMaxVelocity(velocity)
+            self.setMaxVelocity(axis, velocity)
 
         return self.connection.moveBy(axis, distance, self.module_id)
 
